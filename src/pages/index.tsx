@@ -12,7 +12,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   const getDragonList = useCallback(async () => {
-    const { data } = await DragonServices.findAll().finally(() => {setLoading(false)});
+    const { data } = await DragonServices.findAll().finally(() => { setLoading(false) });
     setDragons(data);
   }, []);
 
@@ -24,7 +24,10 @@ const Home = () => {
     <Layout>
       <S.Container>
         <Loading loading={loading}>
-          <Header title="LISTAGEM" />
+          <div className="headerWrapper">
+            <Header title="LISTAGEM" />
+            <S.Button onClick={() => { window.location.href = "create" }}>Adicionar</S.Button>
+          </div>
           <Table head={[{ name: "Dragão" }, { name: "Tipo" }, { name: "Criado em" }]}>
             {dragons.map((dragon: any) => (
               <tr

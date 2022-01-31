@@ -15,7 +15,6 @@ const Detail = () => {
   const getDragonDetail = useCallback(async () => {
     if (id !== undefined) {
       const { data } = await DragonServices.findOne(id).finally(() => { setLoading(false) });
-      console.log(data);
       setDragonDetail(data);
     }
   }, [id]);
