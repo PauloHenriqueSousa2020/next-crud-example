@@ -6,7 +6,8 @@ const findAll = () => {
   return api.get(`${service}`);
 };
 
-const findOne = (id: string) => {
+const findOne = (id: any) => {
+  console.log("ididididididid: ", id);
   return api.get(`${service}/${id}`);
 };
 
