@@ -20,13 +20,18 @@ const Home = () => {
     getDragonList();
   }, [getDragonList]);
 
+  const handleEdit = (e: { stopPropagation: () => void; }, id: number) => {
+    e.stopPropagation();
+    window.location.href = `create_edit?id=${id}`
+  }
+
   return (
     <Layout>
       <S.Container>
         <Loading loading={loading}>
           <div className="headerWrapper">
             <Header title="LISTAGEM" />
-            <S.Button onClick={() => { window.location.href = "create" }}>Adicionar</S.Button>
+            <S.Button onClick={() => { window.location.href = "create_edit" }}>Adicionar</S.Button>
           </div>
           <Table head={[{ name: "Dragão" }, { name: "Tipo" }, { name: "Criado em" }]}>
             {dragons.map((dragon: any) => (
@@ -38,6 +43,9 @@ const Home = () => {
                 <td>{dragon?.name}</td>
                 <td>{dragon?.type}</td>
                 <td className="projectListLastTd">{moment(dragon?.createdAt).format("DD/MM/YYYY")}</td>
+                <td className="editLabel"   >
+                <S.Button onClick={(e) => {handleEdit(e, dragon?.id)}}>Editar</S.Button>
+                </td>
               </tr>
             ))}
           </Table>

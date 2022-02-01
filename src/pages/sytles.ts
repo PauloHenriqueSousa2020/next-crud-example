@@ -30,16 +30,16 @@ export const Container = styled.section`
     }
   }
 
-  .projectListLastTd {
-    padding-right: 30px;
-  }
-
   table {
     table-layout: fixed;
   }
   
   .tableHeader:first-child {
     width: auto;
+  }
+
+  .editLabel {
+    padding-right: 30px;
   }
 `;
 
