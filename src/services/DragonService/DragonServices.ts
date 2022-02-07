@@ -7,7 +7,6 @@ const findAll = () => {
 };
 
 const findOne = (id: any) => {
-  console.log("ididididididid: ", id);
   return api.get(`${service}/${id}`);
 };
 
@@ -15,8 +14,8 @@ const create = (data: any) => {
   return api.post(`${service}`, data);
 };
 
-const update = (data: any) => {
-  return api.put(`${service}`, data);
+const update = (data: any, id: any) => {
+  return api.put(`${service}/${id}`, data);
 };
 
 
