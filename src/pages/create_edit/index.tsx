@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useFormik } from "formik";
 
 import DragonServices from "services/DragonService/DragonServices";
-import { Layout, Loading } from "components";
+import { Layout } from "components";
 
 const CreateEdit = () => {
   const [dragonDetail, setDragonDetail] = useState<any>({});
@@ -44,9 +44,8 @@ const CreateEdit = () => {
   });
 
   const handleCreateDragon = (values: any) => {
-   
     try{
-      DragonServices.create(values);
+      DragonServices.create(values).finally(() => {window.location.href = `/`});
     }catch(error){
       alert("Erro na hora de criar");
     }
@@ -54,7 +53,7 @@ const CreateEdit = () => {
 
   const handleUpdateDragon = (values: any) => {
     try{
-      DragonServices.update(values, id);
+      DragonServices.update(values, id).finally(() => {window.location.href = `/`});
     }catch(error){
       alert("Erro na hora de editar");
     }
